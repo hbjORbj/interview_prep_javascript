@@ -36,4 +36,6 @@ function smallestLargerNumber(n) {
 Test cases: 
 12 => 21
 3892 => 3928
+
+Category: Math
 */
