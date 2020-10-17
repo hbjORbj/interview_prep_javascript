@@ -35,4 +35,6 @@ Test Cases:
 
 Time Complexity: O(n)
 Space Complexity: O(n)
+
+Category: Sliding Window, Two Pointer
 */
