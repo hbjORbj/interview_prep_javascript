@@ -24,8 +24,11 @@ subarrays possible within the window (bounded by lLow and r).
 5. Repeat from step 3.
 
 Test Cases: ([1,0,1,1,0,1,1], 2) => 8
+
 Time Complexity: O(n)
 Space Complexity: O(1)
+
+Category: Three Pointer
 */
 
 
