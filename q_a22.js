@@ -14,7 +14,7 @@ Questions to ask:
 I will assume YES to all questions above.
 */
 
-function triplets(nums) {
+function threeSum(nums) {
     if (nums.length < 3) return [];
     nums.sort((a,b) => a-b);
     let res = [];
@@ -39,7 +39,7 @@ function triplets(nums) {
 }
 /*
 Test Cases: [0,2,3,-1,-3,-1,2] => [[2,-1,-1], [3,-3,0]]
-
+[-1,-1,0,2,2,3]
 Idea: Same Approach to getting combinations of numbers but with a constraint that length should be 3 and sum should be zero.
 
 Category: Combination, DFS
