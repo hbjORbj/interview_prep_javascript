@@ -43,4 +43,7 @@ Test Cases: [0,2,3,-1,-3,-1,2] => [[2,-1,-1], [3,-3,0]]
 Idea: Same Approach to getting combinations of numbers but with a constraint that length should be 3 and sum should be zero.
 
 Category: Combination, DFS
+
+Time Complexity: O(k* C(n, k)) from k = 1 to k = 3
+Space Complexity: O(C(n,3))
 */
