@@ -31,6 +31,12 @@ function removeDuplicates(nums) {
 }
 
 /*
+Idea:
+1. Loop over the array and have a counter that can also play as a pointer.
+2. Every time I find a different element in the array, place it in the index the counter is pointing to, change the 
+current element to this new element and increment the counter.
+3. Return the counter.
+
 Test Cases: [1,1,1,3,3,3,5,6,7] => 5 ([1,3,5,6,7])
 
 Time Complexity: O(n)
