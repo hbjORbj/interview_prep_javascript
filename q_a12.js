@@ -33,5 +33,6 @@ Idea:
 1. Initialise two pointers l and r and also a map that assigns every letter in p to the map with its frequency as the value.
 2. Expand r pointer until I get a desirable window (window containing all letters of p). If this desirable window's length is equal
 to the length of p, return the first index of the window. Else, move l pointer ahead one by one until our window is no longer desirable.
+While doing so, keep checking if the window's updated length equals the length of p, because if so we'll return the first index of the window.
 3. Once our window is no longer desirable, Go back to step 2 and repeat the process until r reaches the end of s.
 */
