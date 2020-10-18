@@ -19,6 +19,23 @@ var maxDepth = function(root) {
     }
     dfs(root, 0);
     return maxDepth;
+    // Time Complexity: O(n)
+    // Space Complexity: O(1)
+};
+
+// Iterative BFS Solution
+var maxDepth = function(root) {
+    if (!root) return 0;
+    let maxDepth = 0, queue = [{node: root, level:1}];
+    while(queue.length) {
+        let {node, level} = queue.shift();
+        maxDepth = Math.max(maxDepth, level);
+        if (node.left) queue.push({node: node.left, level: level+1});
+        if (node.right) queue.push({node: node.right, level: level+1});
+    }
+    return maxDepth;
+    // Time Complexity: O(n)
+    // Space Complexity: O(n)
 };
 
 /*
