@@ -29,6 +29,15 @@ function findAllAnagrams(s, p) {
 }
 
 /*
+
+Idea:
+1. Initialise two pointers l and r both pointing to zero and a map. 
+Assign every letter in p to the map and record its frequencies as its value.
+2. Expand r pointer until I get a desirable window (window that contains all letters of p). 
+If the desirable window's length is equal to the length of p, push the first index of the window to return array.
+3. Move l pointer ahead one by one until we no longer have a desirable window, 
+and once this happens go back to step 2 and repeat the process.
+
 Test Cases: 
 ("", "abc") => []
 ("abcjksdbac", "abc") => [0,7]
