@@ -36,6 +36,8 @@ until the end of s. In this way, we can keep the same length of our window and t
 substring of this length. If no window of this length is a palindrome, we decrement our window's length and repeat the process
 until we find a palindrome.
 
-Time Complexity:
+Time Complexity: O(n^2)
+Space Complexity: O(n)
 
+Category: Sliding Window
 */
