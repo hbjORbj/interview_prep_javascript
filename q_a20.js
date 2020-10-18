@@ -26,7 +26,7 @@ Idea:
 check if the character already exists in the map. If it does not exist, we assign the letter
 to the map and update our return variable (the length of the longest substring). If it exists, we move l pointer ahead one by one
 and delete the character pointer l is pointing to until this character is no longer in the map. 
-3. Once the character is no longer in the map, we go back to step 2 and repeat the process.
+3. Once the character is no longer in the map, we go back to step 2 and repeat the process until r reaches the end of input string.
 
 Time Complexity: O(n)
 Space Complexity: O(n)
