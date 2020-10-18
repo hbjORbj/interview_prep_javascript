@@ -41,4 +41,9 @@ and if target is greater we search the left half, else we search the right half.
 if we are in the first subarray, we compare the target and the first value of the window,
 and if target is less we search the right half, else we search the left half.
 if we are in the second subarray, we search left half.
+
+Time Complexity: O(log(n))
+Space Complexity: O(1)
+
+Category: Binary Search
 */

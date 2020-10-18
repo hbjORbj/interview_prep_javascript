@@ -41,4 +41,6 @@ Test Cases: [1,1,1,3,3,3,5,6,7] => 5 ([1,3,5,6,7])
 
 Time Complexity: O(n)
 Space Complexity: O(1)
+
+Category: Array
 */
