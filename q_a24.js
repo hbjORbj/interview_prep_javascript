@@ -24,4 +24,7 @@ Idea:
 to the map with its index as its value. Else, change the value of the character in the map to -1 because this character 
 is a repeating character.
 3. Loop over the map and return the first index that is not -1.
+
+Time Complexity: O(n)
+Space Complexity: O(n)
 */
