@@ -6,7 +6,7 @@ Each element in the array represents your maximum jump length at that position.
 Determine if you are able to reach the last index.
 */
 function canJump(nums) {
-    if (!nums) return false;
+    if (!nums.length) return false;
     let validIdx = nums.length-1;
     for (let i = nums.length-2; i >= 0; i--) {
         if (nums[i] + i >= validIdx) validIdx = i;
