@@ -4,32 +4,27 @@ in the integer n and is greater in value than n. If no such positive 32-bit inte
 */
 
 function smallestLargerNumber(n) {
-    let arr = n.toString().split("");
-    let minDiff = Number.MAX_VALUE;
-    let res;
-    let pivot = -1;
-    for (let i = arr.length-1; i > 0; i--) {
-        for (let j = i-1; j >= 0; j--) {
-            if (arr[i] > arr[j]) {
-                let copy = arr.slice();
-                let temp = copy[i];
-                copy[i] = copy[j];
-                copy[j] = temp;
-                let diff = Number(copy.join(""))-n;
-                if (minDiff > diff) {
-                    pivot = j;
-                    res = copy.slice();
-                    minDiff = diff;
-                }
-            }
+    let arr = n.toString().split(""), pivotIdx = -1;
+    for (let i = arr.length-1; i >= 0; i--) {
+        if (arr[i-1] < arr[i]) {
+            pivotIdx = i-1;
+            break;
         }
     }
+    if (pivotIdx == -1) return -1;
 
-    if (pivot == -1) return -1;
-    let lSubstr = res.slice(0, pivot+1).join("");
-    let rSubstr = res.slice(pivot+1).sort().join("");
-    let ans = Number(lSubstr + rSubstr);
-    return ans <= 2**31-1 ? ans : -1;
+    let rSubarray = arr.slice(pivotIdx+1).sort((a,b) => a-b);
+    for (let j = 0; j < rSubarray.length; j++) {
+        if (rSubarray[j] > arr[pivotIdx]) {
+            [arr[pivotIdx], rSubarray[j]] = [rSubarray[j], arr[pivotIdx]];
+            break;
+        }
+    }
+    for (let j = pivotIdx+1; j < arr.length; j++) arr[j] = rSubarray[j-pivotIdx-1];
+    let res = Number(arr.join(""));
+    return res <= 2**31-1 ? res : -1;
+    // Time Complexity: O(nlog(n))
+    // Space Complexity: O(n)
 }
 
 /*
@@ -37,5 +32,39 @@ Test cases:
 12 => 21
 3892 => 3928
 
+Idea:
+1. We loop over every digit from the last index and try to find two consecutive digits where nums[i-1] < nums[i]. 
+Once we find this, we should find a digit just greater than the digit at nums[i-1]. We can do this by sorting the subarray
+from index i and then pick the first digit greater than our digit at pivot index (i-1). We swap the two digits, and we 
+go back to our old array and replace the elements after the pivot index with this sorted subarray.
+2. Convert this array into an integer, check if is less than or equal to a positive 32-bit integer, if true return it, else return -1.
+
 Category: Math
 */
+
+// Without using sort()
+var nextGreaterElement = function(n) {
+    let arr = n.toString().split(""), pivotIdx = -1;
+    for (let i = arr.length-1; i >= 0; i--) {
+        if (arr[i-1] < arr[i]) {
+            pivotIdx = i-1;
+            break;
+        }
+    }
+    if (pivotIdx == -1) return -1;
+    
+    for (let j = arr.length-1; j >= pivotIdx; j--) {
+        if (arr[pivotIdx] < arr[j]) {
+            [arr[pivotIdx], arr[j]] = [arr[j], arr[pivotIdx]];
+            break;
+        }
+    }
+    let rSubarray = arr.slice(pivotIdx+1).reverse();    
+    
+    
+    for (let j = pivotIdx+1; j < arr.length; j++) arr[j] = rSubarray[j-pivotIdx-1];
+    let res = Number(arr.join(""));
+    return res <= 2**31-1 ? res : -1;
+    // Time Complexity: O(n)
+    // Space Complexity: O(n)
+};
