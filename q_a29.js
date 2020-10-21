@@ -22,8 +22,8 @@ Idea:
 else continue.
 3. Return the array. 
 
-Time Complexity: O(n+k) where n is the number of elements in arr1 and k is the number of elements that intersect
-Space Complexity: O(n+k)
+Time Complexity: O(n+m) where n is the number of elements in arr1 and m is the number of elements in arr2
+Space Complexity: O(n+m)
 */
 
 /*
@@ -36,5 +36,19 @@ Cases to take into consideration include:
 duplicates, negative values, single value lists, 0's, and empty list arguments.
 */
 function intersectionOfTwoSortedArrays(arr1, arr2) {
-
+    let intersection = [];
+    let i = 0, j = 0;
+    while (i < arr1.length && j < arr2.length) {
+        if (arr1[i] == arr2[j] && intersection[intersection.length-1] !== arr1[i]) {
+            intersection.push(arr1[i]);
+            i++, j++;
+        } 
+        else if (arr1[i] < arr2[j]) i++;
+        else j++;
+    }
+    return intersection;
 }
+
+/*
+Test Cases: ( [-3, 0, 3, 3, 5], [0, 5, 5] ) => [0, 5]
+*/
