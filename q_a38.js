@@ -4,6 +4,10 @@ You are given an array of integers.
 Rearrange the array so that all zeros are at the beginning of the array.
 
 Maintain the order of non-zeros.
+
+Questions to ask:
+1. What if there are no zeros?
+- The array will be unchanged.
 */
 function moveZerosToFront(nums) {
     let boundary = nums.length-1;

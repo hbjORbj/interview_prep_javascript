@@ -2,6 +2,12 @@
 You are given an array of integers.
 
 Rearrange the array so that all zeros are at the beginning of the array.
+
+Questions to ask:
+1. What if there are no zeros?
+- The array will be unchanged.
+2. After the re-arrangement, do non-zero elements need to be in the same order as they were before?
+- No. Don't need to be.
 */
 function moveZerosToFront(nums) {
     let boundary = 0;
