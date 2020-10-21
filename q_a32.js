@@ -29,7 +29,7 @@ Idea:
 1. Initialise two pointers l and r, pointing to zero and nums.length-1.
 2. Initiate a while loop. Inside the while loop, get the current container with current l and r positions and update
 the maximum container, and then compare the height at l and the height at r and move the pointer that is pointing to a smaller height
-because we want to maximise our container and therefore move to look for a bigger height.
+because we want to maximise our container and therefore need to move to look for a bigger height.
 3. Repeat step 2 until l equals r.
 
 Category: Two Pointer
