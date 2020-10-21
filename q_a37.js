@@ -17,21 +17,19 @@ function moveZerosToFront(nums) {
 /*
 Test Cases: 
 
-[0,1,-4,5,9,0,0] => [0,0,0,_,_,_,_]
-[] => []
-[0] => [0]
-[1] => [1]
+Regular case [0,1,-4,5,9,0,0] => [0,0,0,_,_,_,_]
+Edge case [] => []
+Base case [0] => [0]
+Base case [1] => [1]
 
 Idea:
 1. I will partition this array into two parts: zeros and non-zeros.
 The array with zeros will be the first subarray and the second will be the one with non-zeros. 
 2. Create a variable called "boundary" and this will represent the index the next zero will be placed at.
-So, we initialise it to 0.
+So, we initialise it to the first index of the array (0).
 3. Loop over every element of the array from the beginning, and every time we encounter a zero, we put it in the first subarray,
 by swapping with the element at the "boundary" index, and increment "boundary" variable.
 4. Return the array.
-
-* This implementation does not maintain the order of the non-zeros.
 
 Time Complexity: O(n)
 Space Complexity: O(1)
