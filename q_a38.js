@@ -25,7 +25,8 @@ Base Case [1] => [1]
 Idea:
 1. I will partition this array into two parts: zeros and non-zeros.
 The array with zeros will be the first subarray and the second will be the one with non-zeros. 
-2. Create a variable called "boundary" and this will represent the index the next non-zero will be placed at.
+2. Create a variable to track the boundary between the first subarray and second subarray. 
+This is the index the next non-zero will be placed at.
 So, we initialise it to the last index of the array (nums.length-1).
 3. Loop over every element of the array from the back, and every time we encounter a non-zero, we put it in the second subarray,
 by swapping with the element at the "boundary" index, and decrement "boundary" variable.

@@ -25,7 +25,7 @@ Base case [1] => [1]
 Idea:
 1. I will partition this array into two parts: zeros and non-zeros.
 The array with zeros will be the first subarray and the second will be the one with non-zeros. 
-2. Create a variable called "boundary" and this will represent the index the next zero will be placed at.
+2. Create one variable to track the boundary between the first subarray and second subarray.
 So, we initialise it to the first index of the array (0).
 3. Loop over every element of the array from the beginning, and every time we encounter a zero, we put it in the first subarray,
 by swapping with the element at the "boundary" index, and increment "boundary" variable.
