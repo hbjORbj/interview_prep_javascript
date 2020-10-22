@@ -1,9 +1,5 @@
 /*
 Given an array of integers A, find the sum of each sliding window of size K.
-Variation:​ Instead of an array, what if you were presented with a ​stream​ of numbers. 
-A new number can be added anytime. You want to find the sum of the last K elements.
-Note​: The above problem can be solved without a Queue as well - just maintain a sum with 2 pointers. 
-However, a queue is needed for the Variation problem. We use this problem to illustrate the sliding window concept.
 
 Qs to ask:
 1. How do you want the output?
