@@ -33,7 +33,6 @@ function longestUniqueSubstring(str) {
     }
     return res;
 }
-
 /*
 Test Cases:
 "aadeeb" => [1,3]
