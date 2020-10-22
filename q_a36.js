@@ -41,5 +41,7 @@ var intersect = function(nums1, nums2) {
 /*
 Follow up: What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
 
-- It is okay. We are assigning the numbers in arr1 to a map, not the numbers in arr2, so we do not need all elements of arr2 simultaneously. We will load them one by one and check if it exists in the map. If it does, we push the number to our return array and decrement the map's value. Else, continue.
+- It is okay. We are assigning the numbers in arr1 to a map, not the numbers in arr2, so we do not need all elements of arr2 simultaneously. 
+We will load them one by one and check if it exists in the map. 
+If it does, we push the number to our return array and decrement the map's value. Else, continue.
 */
