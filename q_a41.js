@@ -21,8 +21,10 @@ Test Cases:
 [2] => 2
 
 1. Initialise two variables, subArrSum and maxSum, both to the first element of input, because the first element is the only subarray sum and maximum sum we can have at this point.
-2. Loop over the array from second element and compare the element with the subarray sum + the element. So, we are basically deciding whether to include this element in our subarray sum we have had so far or start a new subarray sum from this element. We choose the greater one since we want to maximise our sum.
-3. For every iteration, we update our return variable to store the maximum subarry sum.
+2. Loop over the array from second element and compare the element with the subarray sum + the element. 
+So, we are basically deciding whether to include this element in our subarray sum we have had so far or start a new subarray sum from this element. 
+We choose the greater one since we want to maximise our sum.
+3. For every iteration, we update the maximum subarry sum.
 4. Return the maximum sum.
 
 Time Complexity: O(n)
