@@ -1,0 +1,3 @@
+/*
+You are given a sorted array A and a target T. Return the index where it would be placed if inserted in order.
+*/
