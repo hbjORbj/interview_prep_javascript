@@ -17,7 +17,7 @@ function dutchNationalFlag(nums, pivot) {
     let lowerBoundary = 0, upperBoundary = nums.length-1;
     for (let i = 0; i <= upperBoundary; i++) {
         // upperBoundary represents the index where the next element greater than pivot "will" be placed at
-        // so at this index, there might be a number less than pivot which we need to move to the beginning
+        // so currently at this index, there might be a number less than pivot which we need to move to the beginning
         // so we should include this in our range!
         if (nums[i] < pivot) {
             [nums[i], nums[lowerBoundary]] = [nums[lowerBoundary], nums[i]];

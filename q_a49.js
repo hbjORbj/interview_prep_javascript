@@ -26,9 +26,8 @@ function prefixSum2(nums, X) {
         if (m.has(diff)) {
             let idx = m.get(diff);
             return nums.slice(idx+1, i+1);
-        } else {
-            m.set(sum, i);
-        }
+        } 
+        m.set(sum, i);
     }
     return [];
 }
