@@ -53,4 +53,7 @@ Else, I will assign current prefix sum to the map with the number's index as its
 2. If we encounter sum X at i, we return [0..i] as answer.
 3. We also keep a map of old prefix sums. If we find current prefix sum - X at index p, we return [p+1..i]. 
 Else, assign current prefix sum to the map and continue.
+
+Time Complexity: O(n)
+Space Complexity: O(n)
 */
