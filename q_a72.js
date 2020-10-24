@@ -21,7 +21,6 @@ function findSqrt(X) {
     }
     return -1; // Should not happen
 } 
-
 /*
 Test Cases:
 0 => 0
