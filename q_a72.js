@@ -5,9 +5,12 @@ If X is not a perfect square, find the integer floor of the square root.
 
 Qs:
 1. What to return if X is 0?
-- Return 0:
+- Return 0.
+2. What is X is negative?
+- Return null;
 */
 function findSqrt(X) {
+    if (X < 0) return null;
     if (X <= 1) return X;
     let left = 1, right = X, mid;
     while (left <= right) {
