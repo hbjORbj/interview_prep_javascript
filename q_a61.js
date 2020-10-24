@@ -2,10 +2,10 @@
 Given a linked list that has a cycle, find the length of the cycle. The length is in number of nodes.
 
 Qs:
-1. If the list is empty, return null?
+1. If the list is empty, return 0?
 - Yes.
 2. Is it guaranteed that the input list has a cycle?
-- Yes.
+- No.
 */
 
 let node1 = new ListNode(1);
@@ -27,7 +27,7 @@ function ListNode(val) {
 console.log(findLengthOfCycle(node1));
 
 function findLengthOfCycle(head) {
-    if (head == null) return null;
+    if (head == null) return 0;
     let slow = head, fast = head;
     while (fast != null) {
         fast = fast.next;
@@ -38,6 +38,7 @@ function findLengthOfCycle(head) {
         }
         slow = slow.next;
     }
+    if (fast == null) return 0; // no cycle found
     return countLength(slow);
 }
 
