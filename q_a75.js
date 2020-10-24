@@ -8,7 +8,7 @@ var countPrimes = function (n) {
     primes[0] = false, primes[1] = false;
     for (let i = 2; i < Math.sqrt(n); i++) {
         if (primes[i] == true) {
-            for (let j = i**2; j < n; j += i) {
+            for (let j = i**2; j < n; j += i) { // optimisation: we start at i**2 instead of i*2
                 primes[j] = false;
             }
         }
@@ -17,5 +17,9 @@ var countPrimes = function (n) {
             .filter(val => val > 0).length;
 };
 
-// Time Complexity: O(n)
+/*
+Sieve of Eratosthenes is an algorithm to find all prime numbers up to any given limit.
+Here, we find all prime numbers less than n and return the count of them.
+*/
+// Time Complexity: O(nlog(n))
 // Space Complexity: O(n)
