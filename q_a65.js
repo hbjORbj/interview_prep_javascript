@@ -23,7 +23,7 @@ function validParentheses(str) {
             if (stack.pop() !== par) return false;
         }
     }
-    return (stack.length == 0) ? true : false;
+    return stack.length == 0;
 }
 
 /*
