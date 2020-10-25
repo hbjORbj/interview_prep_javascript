@@ -38,11 +38,31 @@ var trap = function(heights) {
 };
 
 /*
+Brute Force
 
-Test Cases:
-
-Idea:
-
-Time Complexity:
-Space Complexity:
+Time Complexity: O(n^2)
+Space Complexity: O(1)
 */
+
+var trap = function(heights) {
+    let trapped = 0, size = heights.length;
+    let leftMax = new Array(size);
+    let rightMax = new Array(size);
+    leftMax[0] = heights[0];
+    rightMax[size-1] = heights[size-1];
+    for (let i = 1; i < size; i++) {
+        leftMax[i] = Math.max(leftMax[i-1], heights[i]);
+    }
+    for (let i = size-2; i >= 0; i--) {
+        rightMax[i] = Math.max(rightMax[i+1], heights[i]);
+    }
+    for (let i = 0; i < size; i++) {
+        let water = Math.min(leftMax[i], rightMax[i]) - heights[i];
+        if (water > 0) trapped += water;
+    }
+    return trapped;
+    
+    // Time Complexity: O(n)
+    // Space Complexity: O(n)
+    // DP
+}
