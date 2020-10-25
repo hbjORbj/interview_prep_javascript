@@ -32,6 +32,6 @@ var numIslands = function(grid) {
     }
     // Time Complexity: O(m*n) where m = height (number of rows) and n = width (number of columns)
     // Space Complexity: O(m*n) due to recursion: we have drawn implicit graphs. 
-    // If the whole matrix is a big island (with all elements being '1'), we have traversed n*m implicit vertices
+    // If the whole matrix is a big island (with all elements being '1'), we have traversed m*n implicit vertices
 
 };
