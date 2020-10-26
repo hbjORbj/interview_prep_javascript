@@ -37,12 +37,10 @@ var trap = function(heights) {
     return count;
 };
 
-/*
-Brute Force
+// Brute Force
 
-Time Complexity: O(n^2)
-Space Complexity: O(1)
-*/
+// Time Complexity: O(n^2)
+// Space Complexity: O(1)
 
 var trap = function(heights) {
     let trapped = 0, size = heights.length;
@@ -56,13 +54,40 @@ var trap = function(heights) {
     for (let i = size-2; i >= 0; i--) {
         rightMax[i] = Math.max(rightMax[i+1], heights[i]);
     }
-    for (let i = 0; i < size; i++) {
-        let water = Math.min(leftMax[i], rightMax[i]) - heights[i];
-        if (water > 0) trapped += water;
+    for (let i = 1; i < size-1; i++) {
+        trapped += Math.min(leftMax[i], rightMax[i]) - heights[i];
     }
     return trapped;
     
     // Time Complexity: O(n)
     // Space Complexity: O(n)
     // DP
+}
+
+var trap = function(heights) {
+    let trapped = 0, low = 0, high = heights.length-1;
+    let leftMax = 0, rightMax = 0;
+    while (low < high) {
+        if (heights[low] <= heights[high]) { 
+            // we know that there is wall in the right that is either equal to
+            // or higher than our tallest wall in the left
+            // that's why our index has moved so far and we are in this conditional
+            // statement
+            if (leftMax > heights[low]) trapped += leftMax - heights[low];
+            else leftMax = heights[low];
+            low++;
+        } else {
+            // we know that there is wall in the left that is either equal to
+            // or higher than our tallest wall in the right
+            // that's why our index has moved so far and we are in this conditional
+            // statement
+            if (rightMax > heights[high]) trapped += rightMax - heights[high];
+            else rightMax = heights[high];
+            high--;
+        }
+    }
+    return trapped;
+    // Two Pointer
+    // Time Complexity: O(n)
+    // Space Complexity: O(1)
 }
