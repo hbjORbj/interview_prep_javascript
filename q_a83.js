@@ -12,7 +12,8 @@ function dfsWithAdjList(list) {
             res.push(cur);
             visited[cur] = true;
             for (let i = 0; i < list[cur].length; i++) {
-                dfs(visited, list[cur][i]);
+                let connection = list[cur][i];
+                dfs(visited, connection);
             }
         }
     }
