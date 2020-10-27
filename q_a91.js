@@ -45,4 +45,7 @@ Test Cases:
 Idea:
 1. For positive numbers, put 5 before the first smaller number
 2. For negative numbers, put 5 before the first larger number
+
+Time Complexity: O(1)
+Space Complexity: O(1)
 */
