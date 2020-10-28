@@ -30,7 +30,7 @@ var canFinish = function(numCourses, prerequisites) {
         return false;
     }
     // DFS Brute Force
-    // Time Complexity: O(n^2)
+    // Time Complexity: O(n^3)
     // Space Complexity: O(n^2)
 };
 
@@ -68,7 +68,7 @@ var canFinish = function(numCourses, prerequisites) {
     }
     return true;
     // BFS
-    // Time Complexity: O(n^2)
+    // Time Complexity: O(n^3)
     // Space Complxity: O(n^2)
 };
 
