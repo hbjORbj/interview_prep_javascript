@@ -1,3 +1,7 @@
+/*
+Create a class Comparator that has compare(a,b) method which can compare values of integer, string and array.
+*/
+
 class Comparator {
     constructor() {}
     compare(a, b) {
