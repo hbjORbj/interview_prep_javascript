@@ -31,7 +31,7 @@ var canFinish = function(numCourses, prerequisites) {
     }
     // DFS Brute Force
     // Time Complexity: O(n^2)
-    // Space Complexity: O(n)
+    // Space Complexity: O(n^2)
 };
 
 console.log(canFinish(2, [[1,0], [0,1]]));
@@ -69,7 +69,7 @@ var canFinish = function(numCourses, prerequisites) {
     return true;
     // BFS
     // Time Complexity: O(n^2)
-    // Space Complxity: O(n)
+    // Space Complxity: O(n^2)
 };
 
 var canFinish = function(numCourses, prerequisites) {
@@ -101,8 +101,8 @@ var canFinish = function(numCourses, prerequisites) {
 
     return totalDegree == 0;
     // Topological sort
-    // Time Complexity: O(n)
-    // Space Complexity: O(n)
+    // Time Complexity: O(n^2)
+    // Space Complexity: O(n^2)
 };
 
 var canFinish = function(numCourses, prerequisites) {
@@ -136,6 +136,6 @@ var canFinish = function(numCourses, prerequisites) {
 
     return count == numCourses;
     // Topological sort
-    // Time Complexity: O(n)
-    // Space Complexity: O(n)
+    // Time Complexity: O(n^2)
+    // Space Complexity: O(n^2)
 };
