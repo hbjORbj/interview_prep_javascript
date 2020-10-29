@@ -35,3 +35,21 @@ So, we need to compute numberOfPaths(n) which equals numberOfPaths(n-1) + number
 We know for certain that numberOfPaths(0) is 0, numberOfPaths(1) is 1, and numberOfPaths(2) is 2.
 So, these will be our base cases.
 */
+
+var minCostClimbingStairs = function(cost) {
+    let prevPrev = cost[0], prev = cost[1];
+    for (let i = 2; i < cost.length; i++) {
+        let current = cost[i] + Math.min(prevPrev, prev);
+        // current represents the minimum cost to get to this step from the start and climb up from this step
+        prevPrev = prev;
+        prev = current;
+        // since prev becomes current and prevPrev becomes prev, they both represent the minimum cost to get to where they are currently at from the start and climb up from there
+    }
+    // Now, we can reach the top of the floor from both prevPrev and prev.
+    // prev is the minimum cost to reach the top floor by stepping once
+    // and prevPrev is the minimum cost to reach to top floor by stepping twice.
+    // We want to minimise the cost to get to the top, so we compute the min value between them
+    return Math.min(prevPrev, prev);
+    // Time Complexity: O(n)
+    // Space Complexity: O(1)
+}

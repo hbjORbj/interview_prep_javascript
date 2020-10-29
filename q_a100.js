@@ -9,7 +9,7 @@ You need to find minimum cost to reach the top of the floor, and you can either 
 var minCostClimbingStairs = function(cost) {
     let minCosts = new Array(cost.length+1); // the last index for the top of the floor
     minCosts[0] = cost[0], minCosts[1] = cost[1];
-    // minCosts[i] represents the minimum cost to climb up from i
+    // minCosts[i] represents the minimum cost to get to i and climb up from i
     for (let i = 2; i <= cost.length; i++) {
         minCosts[i] = Math.min(minCosts[i-1], minCosts[i-2]) + 
             (i == cost.length ? 0 : cost[i]);
