@@ -32,8 +32,7 @@ var knightProbability = function(N, K, r, c) {
 };
 // Top-down
 // Time Complexity: O(K * N^2)
-// Space Complexity: O(N^2)
-
+// Space Complexity: O(K * N^2)
 
 var knightProbability = function(N, K, r, c) {
     const DIRECTIONS = [[-2,-1],[-2,1],[2,-1],[2,1],[-1,-2],[1,-2],[-1,2],[1,2]];
@@ -71,4 +70,4 @@ var knightProbability = function(N, K, r, c) {
 }
 // Bottom-up
 // Time Complexity: O(K * N^2)
-// Space Complexity: O(N^2)
+// Space Complexity: O(K * N^2)
