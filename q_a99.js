@@ -23,6 +23,9 @@ var networkDelayTime = function(times, N, K) {
   let res = Math.max(...distances);
   return res === Infinity ? -1 : res;
 }
+// Bellman-Ford's algorithm
+// Time Complexity: O(N*E) where E can be N^2 in the worst case
+// Space Complexity: O(N)
 
 
 /**
