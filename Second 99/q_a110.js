@@ -56,7 +56,7 @@ function getTurns(arr, curSum, targetSum) {
     return turns;
 }
 
-// Time Complexity: O(K*M) + O(K*N) where K represents the number of possible sums
+// Time Complexity: O(K*M + K*N) where K represents the number of possible sums
 // Space Complexity: O(M) + O(N)
 
 console.log(minTurns([1,4,3],[6,6,6]));
