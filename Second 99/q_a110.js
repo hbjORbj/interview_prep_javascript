@@ -34,21 +34,9 @@ function minTurns(A, B) {
 
     let sumA = A.reduce((acc,cur) => acc+cur);
     let sumB = B.reduce((acc,cur) => acc+cur);
-    let minDiff = Infinity;
-    let bestSums = [];
-    for (let possibleSum of possibleSums) {
-        let diff1 = Math.abs(sumA-possibleSum);
-        let diff2 = Math.abs(sumB-possibleSum);
-        if (diff1 + diff2 < minDiff) {
-            bestSums = [possibleSum];
-            minDiff = diff1 + diff2;
-        } else if (diff1 + diff2 == minDiff) {
-            bestSums.push(possibleSum);
-        }
-    }
     let minTurns = Infinity;
-    for (let bestSum of bestSums) {
-        let turns = getTurns(A,sumA,bestSum) + getTurns(B,sumB,bestSum);
+    for (let possibleSum of possibleSums) {
+        let turns = getTurns(A,sumA,possibleSum) + getTurns(B,sumB,possibleSum);
         minTurns = Math.min(minTurns, turns);
     }
     return minTurns;
@@ -75,6 +63,9 @@ console.log(minTurns([1],[6,2,1]));
 console.log(minTurns([1,6,4],[6,2,1]));
 console.log(minTurns([2,4,5],[6]));
 console.log(minTurns([1],[6,3,3,3,3,1,1,1]));
+console.log(minTurns([1,2,3,4,5,6], [1,2,3,4,5,6]));
+console.log(minTurns([1,2,3], [4,5,6]));
+console.log(minTurns([3,3], [4,5,6,4]));
 
 // [1,4,3],[6,6,6] => 2
 // [1],[6,2,1] => 2
