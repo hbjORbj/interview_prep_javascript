@@ -60,12 +60,11 @@ function getTurns(arr, curSum, targetSum) {
         if (targetSum > curSum) { // trying to make our sum larger
             curSum += Math.min(targetSum-curSum, 6-arr[i]);
             if (arr[i] !== 6) turns++; // we skip 6 since it is already the maximum possible number
-            i++;
         } else { // trying to make our sum smaller
             curSum -= Math.min(curSum-targetSum, arr[i]-1);
             if (arr[i] !== 1) turns++; // we skip 1 since it is already the minimum possible number
-            i++;
         }
+        i++;
     }
     return turns;
 }
