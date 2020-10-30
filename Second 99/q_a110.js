@@ -56,14 +56,15 @@ function minTurns(A, B) {
 
 function getTurns(arr, curSum, targetSum) {
     let turns = 0, i = 0;
+    if (targetSum > curSum) arr.sort((a,b) => a-b); // sort array in ascending order
+    else arr.sort((a,b) => b-a); // sort array in descending order
     while (curSum !== targetSum) {
         if (targetSum > curSum) { // trying to make our sum larger
             curSum += Math.min(targetSum-curSum, 6-arr[i]);
-            if (arr[i] !== 6) turns++; // we skip 6 since it is already the maximum possible number
         } else { // trying to make our sum smaller
             curSum -= Math.min(curSum-targetSum, arr[i]-1);
-            if (arr[i] !== 1) turns++; // we skip 1 since it is already the minimum possible number
         }
+        turns++;
         i++;
     }
     return turns;
@@ -78,5 +79,5 @@ console.log(minTurns([1],[6,3,3,3,3,1,1,1]));
 // [1,4,3],[6,6,6] => 2
 // [1],[6,2,1] => 2
 // [1,6,4],[6,2,1] => 1
-// [2,4,5],[6] => 3
+// [2,4,5],[6] => 2
 // [1],[6,3,3,3,3,1,1,1] => -1
