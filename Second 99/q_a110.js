@@ -25,20 +25,15 @@ function minTurns(A, B) {
         start = B.length * 1;
         end = A.length * 6;
     }
-    let possibleSums = [];
-    for (let i = start; i <= end; i++) {
-        possibleSums.push(i);
-    }
-
-    if (possibleSums.length == 0) return -1; // Impossible to make both arrays have a common sum
+    if (start > end) return -1; // Impossible to make both arrays have a common sum
 
     let sumA = A.reduce((acc,cur) => acc+cur);
     let sumB = B.reduce((acc,cur) => acc+cur);
-    let minTurns = Infinity;
     let sortedA = A.sort((a,b) => a-b);
     let sortedB = B.sort((a,b) => a-b);
+    let minTurns = Infinity;
 
-    for (let possibleSum of possibleSums) {
+    for (let possibleSum = start; possibleSum <= end; possibleSum++) {
         let turnsA = getTurns(sortedA,sumA,possibleSum);
         let turnsB = getTurns(sortedB,sumB,possibleSum);
         minTurns = Math.min(minTurns, turnsA + turnsB);
