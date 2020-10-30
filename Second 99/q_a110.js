@@ -35,17 +35,19 @@ function minTurns(A, B) {
     let sumA = A.reduce((acc,cur) => acc+cur);
     let sumB = B.reduce((acc,cur) => acc+cur);
     let minTurns = Infinity;
+    let ascendingA = A.sort((a,b) => a-b), descendingA = A.sort((a,b) => b-a);
+    let ascendingB = B.sort((a,b) => a-b), descendingB = B.sort((a,b) => b-a);
+
     for (let possibleSum of possibleSums) {
-        let turns = getTurns(A,sumA,possibleSum) + getTurns(B,sumB,possibleSum);
-        minTurns = Math.min(minTurns, turns);
+        let turnsA = sumA < possibleSum ? getTurns(ascendingA,sumA,possibleSum) : getTurns(descendingA,sumA,possibleSum);
+        let turnsB = sumB < possibleSum ? getTurns(ascendingB,sumB,possibleSum) : getTurns(descendingB,sumB,possibleSum);
+        minTurns = Math.min(minTurns, turnsA + turnsB);
     }
     return minTurns;
 }
 
 function getTurns(arr, curSum, targetSum) {
     let turns = 0, i = 0;
-    if (targetSum > curSum) arr.sort((a,b) => a-b); // sort array in ascending order
-    else arr.sort((a,b) => b-a); // sort array in descending order
     while (curSum !== targetSum) {
         if (targetSum > curSum) { // trying to make our sum larger
             curSum += Math.min(targetSum-curSum, 6-arr[i]);
