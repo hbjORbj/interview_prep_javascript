@@ -15,15 +15,22 @@ Q:
 - No.
 */
 
-function rob(nums) {
-    let prevMax = 0, curMax = 0;
-    for (let i = 0; i < nums.length; i++) {
-        let temp = curMax;
-        curMax = Math.max(prevMax+nums[i], curMax);
-        prevMax = temp;
+var rob = function(nums) {
+    if (nums.length == 0) return 0;
+    if (nums.length == 1) return nums[0];
+    let dp = new Array(nums.length);
+    dp[0] = nums[0]; // dp[i] represents the maximum money that have been robbed up to i
+    dp[1] = Math.max(nums[0], nums[1]);
+    for (let i = 2; i < nums.length; i++) {
+        dp[i] = Math.max(dp[i-2] + nums[i], dp[i-1]);
     }
-    return curMax;
-}
+    return dp[dp.length-1];
+};
+
+console.log(rob([8,3,1,3,5]));
+console.log(rob([]));
+console.log(rob([8]));
+console.log(rob([8,3]));
 
 /*
 Test Cases: 
@@ -32,22 +39,8 @@ Test Cases:
 [8,3] => 8
 [8] => 8
 
-Idea:
-While looping over the houses, we keep track of the maximum money we could rob, before (or except) the previous house.
-
-The reason we do not include the previous house in this tracking variable is because 
-if we want to rob the current house, we should exclude the money we robbed in the previous house.
-So, we compare the sum of the maximum money before the previous house and money in the current house with
-the maximum money we could rob so far.
-
-We do this comparison until the end of the houses.
-
-There has not been any house yet so we initialise prevMax to zero and curMax to zero.
-As explained above, prevMax represents the maximum money robbed before the previous house, and
-curMax represents the maximum money we could rob so far.
-
 Time Complexity: O(n)
-Space Complexity: O(1)
+Space Complexity: O(n)
 
 Category: Dynamic Programming
 */
