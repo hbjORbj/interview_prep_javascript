@@ -35,30 +35,34 @@ function minTurns(A, B) {
     let sumA = A.reduce((acc,cur) => acc+cur);
     let sumB = B.reduce((acc,cur) => acc+cur);
     let minTurns = Infinity;
-    let ascendingA = A.sort((a,b) => a-b), descendingA = A.sort((a,b) => b-a);
-    let ascendingB = B.sort((a,b) => a-b), descendingB = B.sort((a,b) => b-a);
+    let sortedA = A.sort((a,b) => a-b);
+    let sortedB = B.sort((a,b) => a-b);
 
     for (let possibleSum of possibleSums) {
-        let turnsA = sumA < possibleSum ? getTurns(ascendingA,sumA,possibleSum) : getTurns(descendingA,sumA,possibleSum);
-        let turnsB = sumB < possibleSum ? getTurns(ascendingB,sumB,possibleSum) : getTurns(descendingB,sumB,possibleSum);
+        let turnsA = getTurns(sortedA,sumA,possibleSum);
+        let turnsB = getTurns(sortedB,sumB,possibleSum);
         minTurns = Math.min(minTurns, turnsA + turnsB);
     }
     return minTurns;
 }
 
 function getTurns(arr, curSum, targetSum) {
-    let turns = 0, i = 0;
+    let turns = 0, l = 0, r = arr.length-1;
     while (curSum !== targetSum) {
-        if (targetSum > curSum) { // trying to make our sum larger
-            curSum += Math.min(targetSum-curSum, 6-arr[i]);
-        } else { // trying to make our sum smaller
-            curSum -= Math.min(curSum-targetSum, arr[i]-1);
+        if (targetSum > curSum) { // trying to make our sum greater so need to start from smallest
+            curSum += Math.min(6-arr[l], targetSum-curSum);
+            l++;
+        } else { // trying to make our sum smaller so need to start from greatest
+            curSum -= Math.min(arr[r]-1, curSum-targetSum);
+            r--;
         }
         turns++;
-        i++;
     }
     return turns;
 }
+
+// Time Complexity: O(M^2) + O(N^2)
+// Space Complexity: O(M) + O(N)
 
 console.log(minTurns([1,4,3],[6,6,6]));
 console.log(minTurns([1],[6,2,1]));
@@ -74,3 +78,6 @@ console.log(minTurns([3,3], [4,5,6,4]));
 // [1,6,4],[6,2,1] => 1
 // [2,4,5],[6] => 2
 // [1],[6,3,3,3,3,1,1,1] => -1
+// [1,2,3,4,5,6], [1,2,3,4,5,6] => 0
+// [1,2,3], [4,5,6] => 2
+// [3,3], [4,5,6,4] => 4
