@@ -16,9 +16,14 @@ function bubbleSort(A) {
 }
 console.log(bubbleSort([4,1,9,2]));
 console.log(bubbleSort([2,-1,3,5]));
+console.log(bubbleSort([]));
 
 /*
 Test Cases:
 [4,1,9,2] => [1,2,4,9]
 [2,-1,3,5] => [-1,2,3,5]
+[] => []
+
+Time Complexity: O(n^2)
+Space Complexity: O(1)
 */  
