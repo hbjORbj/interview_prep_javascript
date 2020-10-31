@@ -15,7 +15,7 @@ function minUniqueIds(ids, m) {
     let numOfUniqueIds = map.size;
     let frequencies = Array.from(map.values()).sort((a,b) => a-b);
     let i = 0;
-    while (m > 0) { // runs n (length of ids) times in the worst case
+    while (m > 0 && i < frequencies.length) { // runs n (length of ids) times in the worst case
         if (frequencies[i] > m) {
             break;
         }
@@ -31,9 +31,11 @@ console.log(minUniqueIds([], 2));
 console.log(minUniqueIds([2,3], 2));
 console.log(minUniqueIds([1,1,1,1,2,2,2,2,2], 3 ));
 console.log(minUniqueIds([1,1,1,1,2,2,2,2,2], 7 ));
+console.log(minUniqueIds([2,3], 100));
 
 // [2,3,1,1,1,3,4], 2 => 2
 // [], 2 => 0
 // [2,3], 2 => 0
 // [1,1,1,1,2,2,2,2,2], 3  => 2
 // [1,1,1,1,2,2,2,2,2], 7 => 1
+// [2,3], 100 => 0

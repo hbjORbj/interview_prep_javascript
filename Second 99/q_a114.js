@@ -1,7 +1,7 @@
 /*
 Implement a bubble sort.
 */
-function bubbleSort(A) {
+function bubbleSort1(A) { // sorts the array in ascending order
     while (true) { // runs n times in the worst case: ex) [6,5,4,3,2,1]
         let swap = 0;
         for (let i = 0; i < A.length-1; i++) {
@@ -27,3 +27,7 @@ Test Cases:
 Time Complexity: O(n^2)
 Space Complexity: O(1)
 */  
+
+function bubbleSort2(A) { // sorts the array in descending order
+
+}
