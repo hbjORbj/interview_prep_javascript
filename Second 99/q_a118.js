@@ -9,6 +9,10 @@ Examples:
 - Given S = "eedaaad" , the function should return "eedaad" . 
 - Given S = "xxxtxxx" , the function should return "xxtxx" .
 - Given S = "uuuuxaaaaxuuu" , the function should return "uuxaaxuu" .
+
+Qs:
+1. What to return if the string is empty?
+- Return an empty string.
 */
 
 function lessConsecutiveStr(S) {
