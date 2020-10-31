@@ -29,6 +29,8 @@ function lessConsecutiveStr(S) {
     }
     return res;
 }
+// Time Complexity: O(n)
+// Space Complexity: O(1)
 
 console.log(lessConsecutiveStr("eedaaad"));
 console.log(lessConsecutiveStr("xxxtxxx"));
