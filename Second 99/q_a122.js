@@ -39,6 +39,9 @@ function minDeletionCost(S, C) {
     }
     return totalCost;
 }
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
 console.log(minDeletionCost("abccbd", [0,1,2,3,4,5]));
 console.log(minDeletionCost("aabbcc", [1,2,1,2,1,2]));
 console.log(minDeletionCost("aaaa", [3,4,5,6]));
