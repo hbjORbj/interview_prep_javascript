@@ -14,46 +14,18 @@ You should return [12, 9].
 function largestArea(w, h, isVertical, distance) {
     if (isVertical.length !== distance.length) return null;
     if (w == 0 || h == 0) return 0;
-    let grid = new Array(h).fill(0).map(() => new Array(w).fill()); 
-    let largestArea = w*h;
     let areas = [];
     for (let i = 0; i < isVertical.length; i++) {
-        let boundaryArea = 0;
-        if (isVertical[i] == 1) {
-            boundaryArea = drawVerticalBoundary(distance[i], grid); // distance[i] for vertical boundary is distance from the left
-        } else {
-            boundaryArea = drawHorizontalBoundary(h-distance[i], grid); // distance[i] for horizontal boundary is distance from the bottom
+        if (isVertical[i] == 1) { // height stays the same
+            w = Math.max(w-distance[i], distance[i]); // compare whether the width of boundary or the width of
+                                                      // the remaining rectangle is greater
+        } else { // width stays the same
+            h = Math.max(h-distance[i], distance[i]); // compare whether the height of boundary or the height of
+                                                      // the remaining rectangle is greater
         }
-        largestArea = Math.max(largestArea-boundaryArea, boundaryArea);
-        areas.push(largestArea);
+        areas.push(w*h);
     }
     return areas;
-}
-
-function drawVerticalBoundary(maxCol, grid) {
-    let area = 0;
-    for (let row = 0; row < grid.length; row++) {
-        for (let col = 0; col < maxCol; col++) { // area already taken by another boundary is not part of current boundary
-            if (!grid[row][col]) {
-                area++;
-                grid[row][col] = 1;
-            }
-        }
-    }
-    return area;
-}
-
-function drawHorizontalBoundary(maxRow, grid) {
-    let area = 0;
-    for (let row = 0; row < maxRow; row++) {
-        for (let col = 0; col < grid[0].length; col++) {
-            if (!grid[row][col]) { // area already taken by another boundary is not part of current boundary
-                area++;
-                grid[row][col] = 1;
-            }
-        }
-    }
-    return area;
 }
 
 console.log(largestArea(4,4,[0,1],[3,1])); // => [12,9]
