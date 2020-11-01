@@ -14,7 +14,7 @@ You should return [12, 9].
 function largestArea(w, h, isVertical, distance) {
     if (isVertical.length !== distance.length) return null;
     if (w == 0 || h == 0) return 0;
-    let grid = new Array(h).fill(0).map(() => new Array(w).fill()); // -1 represents areas of the original rectangle
+    let grid = new Array(h).fill(0).map(() => new Array(w).fill()); 
     let largestArea = w*h;
     let areas = [];
     for (let i = 0; i < isVertical.length; i++) {
