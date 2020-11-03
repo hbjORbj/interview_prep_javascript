@@ -26,6 +26,7 @@ var reverseBetween = function(head, m, n) {
     start.next = prev;
     tail.next = cur;
     return m == 1 ? prev : head;
+    // if m == 1, we have no need to connect start list with reversed list reversed list itself is the start (or the head)
     // Time Complexity: O(n)
     // Space Complexity: O(1)
 };
