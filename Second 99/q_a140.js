@@ -10,6 +10,8 @@ Each letter in the magazine string can only be used once in your ransom note.
 Qs:
 1. What to return if both strings are empty?
 - Return true.
+2. Lowercase letters only?
+- Yes.
 */
 
 function canConstruct(ransomNote, magazine) {
@@ -23,6 +25,8 @@ function canConstruct(ransomNote, magazine) {
     }
     return true;
 }
+// Time Complexity: O(m+n)
+// Space Complexity: O(26) = O(1)
 
 console.log(canConstruct("apple", "pppelela")) // => true
 console.log(canConstruct("apple", "")) // => false
