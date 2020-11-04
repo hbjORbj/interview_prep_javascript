@@ -15,9 +15,9 @@ function maxLenSubStr(s) {
     while (end <= s.length) {
         numOfConsecutiveChars++;
         if (numOfConsecutiveChars > 2 || end == s.length) { // time to end our substring is these two cases
-            if (end-start > res.length) res = s.substring(start,end); // if it is not longer, there is no need to store it
-            start = end-1; // slide our window so we can look for a new valid substring
-            numOfConsecutiveChars--; // now we have a valid substring with two contiguous occurrences instead of three
+            if (end - start > res.length) res = s.substring(start,end); // if it is not longer, there is no need to update
+            start = end - 1; // slide our window so we can look for a new valid substring
+            numOfConsecutiveChars = 2; // now we have a valid substring with two contiguous occurrences instead of three
         }
         if (s[end] !== s[end+1]) numOfConsecutiveChars = 0;
         end++;
