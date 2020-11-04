@@ -23,7 +23,7 @@ var rightSideView = function(root) {
 };
 
 var rightSideView = function(root) {
-    let values = [], maxDepth = -1;
+    let values = [], maxDepth = 0;
     function traverse(root, depth) {
         if (root == null) return;
         if (depth > maxDepth) {
@@ -33,7 +33,7 @@ var rightSideView = function(root) {
         traverse(root.right, depth+1);
         traverse(root.left, depth+1);
     }
-    traverse(root, 0);
+    traverse(root, 1);
     return values;
     // Time Complexity: O(n)
     // Space Complexity: O(n)
