@@ -1,3 +1,7 @@
+/*
+DFS implementation of traversal of a 2-D array
+*/
+
 function traverse2dArr(grid) {
     let height = grid.length, width = grid[0].length;
     const DIRECTIONS = [[-1,0],[0,1],[1,0],[0,-1]];
