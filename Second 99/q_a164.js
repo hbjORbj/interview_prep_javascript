@@ -17,4 +17,6 @@ function levelOrder(root) {
         values.push(level);
     }
     return values;
+    // Time Complexity: O(n)
+    // Space Complexity: O(n)
 }
