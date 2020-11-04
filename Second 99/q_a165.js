@@ -21,3 +21,20 @@ var rightSideView = function(root) {
     // Time Complexity: O(n)
     // Space Complexity: O(n), the fattest level can contain n/2 nodes in case of a full tree
 };
+
+var rightSideView = function(root) {
+    let values = [], maxDepth = -1;
+    function traverse(root, depth) {
+        if (root == null) return;
+        if (depth > maxDepth) {
+            maxDepth = depth;
+            values.push(root.val);
+        }
+        traverse(root.right, depth+1);
+        traverse(root.left, depth+1);
+    }
+    traverse(root, 0);
+    return values;
+    // Time Complexity: O(n)
+    // Space Complexity: O(n)
+}
