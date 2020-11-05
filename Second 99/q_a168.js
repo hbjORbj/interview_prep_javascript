@@ -5,13 +5,13 @@ Given a non-empty string s, you may delete at most one character. Judge whether 
 function makePalindrome(s) {
     let left = 0, right = s.length-1;
     while (left < right) {
-        if (s[left] == s[right]) left++, right--;
-        else {
+        if (s[left] !== s[right]) {            
             // 1st case: delete left char
             // 2nd case: delete right char
             return (isPalindrome(left+1, right, s) 
                    || isPalindrome(left, right-1, s));
         }
+        left++, right--;
     }
     return true;
     // Time Complexity: O(n)
