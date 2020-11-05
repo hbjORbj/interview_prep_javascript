@@ -19,17 +19,16 @@ var flatten = function(head) {
         cur = cur.next;
     }    
     return head;
-    
-    function insertChildList(node) {
-        let next = node.next;
-        node.next = node.child;
-        node.next.prev = node;
-        node.child = null;
-        while (node.next !== null) node = node.next;
-        node.next = next;
-        if (next !== null) next.prev = node;
-    }
+    // Time Complexity: O(n)
+    // Space Complexity: O(1)
 };
 
-// Time Complexity: O(n)
-// Space Complexity: O(1)
+function insertChildList(node) {
+    let next = node.next;
+    node.next = node.child;
+    node.next.prev = node;
+    node.child = null;
+    while (node.next !== null) node = node.next;
+    node.next = next;
+    if (next !== null) next.prev = node;
+}
