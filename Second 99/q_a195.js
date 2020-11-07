@@ -11,7 +11,7 @@ function valuesAtDepthH(root, H) {
         let {node, depth} = queue.shift()
         if (depth == H) {
             values.push(node.val);
-            if (queue.length == 0) break; // optimisation
+            continue; // optimisation
         }
         if (node.left) queue.push({node: node.left, depth: depth + 1});
         if (node.right) queue.push({node: node.right, depth: depth + 1});

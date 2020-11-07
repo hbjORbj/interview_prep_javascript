@@ -25,13 +25,13 @@ var distanceK = function(root, target, K) {
     
     while (queue.length > 0) {
         let {node, distance} = queue.shift();
-        if (visited.has(node)) continue;
-        
+        // if (visited.has(node)) continue;
+        // we don't need this line but you can have it to play safe
         visited.set(node, 1);
         
         if (distance == K) {
             values.push(node.val);
-            if (queue.length == 0) break; // optimisation
+            continue; // optimisation
         }
 
         if (node.left && !visited.has(node.left)) {
