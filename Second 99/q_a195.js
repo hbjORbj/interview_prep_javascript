@@ -2,6 +2,8 @@
 Given a binary tree, return all values given a certain height H.
 */
 
+
+
 // BFS
 function valuesAtDepthH(root, H) {
     let queue = [], values = [];
@@ -31,6 +33,6 @@ function valuesAtDepthH(root, H) {
         dfsTraversal(root.left, depth+1);
         dfsTraversal(root.right, depth+1);
     }
-    dfdsTraversal(root, 1);
+    dfsTraversal(root, 1);
     return values;
 }
