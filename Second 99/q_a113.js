@@ -60,3 +60,7 @@ var firstMissingPositive = function(nums) {
     // Time Complexity: O(n)
     // Space Complexity: O(1)
 }
+
+console.log(firstMissingPositive([1,3,6,4,1,2])) // => 5
+console.log(firstMissingPositive([1,-2,3,-2,10,8])) // => 2
+console.log(firstMissingPositive([-1,-2,-3])) // => 1
