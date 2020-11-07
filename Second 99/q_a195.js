@@ -2,8 +2,6 @@
 Given a binary tree, return all values given a certain height H.
 */
 
-
-
 // BFS
 function valuesAtDepthH(root, H) {
     let queue = [], values = [];
