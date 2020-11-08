@@ -19,7 +19,7 @@ var merge = function(intervals) {
     
     return stack;
     // Time Complexity: O(nlog(n))
-    // Space Complexity: O(n)
+    // Space Complexity: O(1)
 };
 
 // (1) [[1,3], [2,6]] => [[1,6]]
