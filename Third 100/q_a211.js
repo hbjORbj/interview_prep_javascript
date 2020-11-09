@@ -1,4 +1,3 @@
-// BFS
 /*
 A company has n employees with a unique ID for each employee from 0 to n - 1. The head of the company has is the one with headID.
 
@@ -11,6 +10,7 @@ The i-th employee needs informTime[i] minutes to inform all of his direct subord
 Return the number of minutes needed to inform all the employees about the urgent news.
 */
 
+// BFS
 var numOfMinutes = function(n, headID, manager, informTime) {
     let adjList = new Array(n).fill(0).map(() => []);
     for (let i = 0; i < manager.length; i++) {
