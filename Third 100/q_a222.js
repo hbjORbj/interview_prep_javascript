@@ -6,6 +6,7 @@ According to the definition of LCA on Wikipedia: “The lowest common ancestor i
 that has both p and q as descendants (where we allow a node to be a descendant of itself).”
 */
 
+/**********************************************************************/ 
 // BFS
 var lowestCommonAncestor = function(root, p, q) {
     let m = new Map();
@@ -43,7 +44,7 @@ var lowestCommonAncestor = function(root, p, q) {
     // Space Complexity: O(n), the map will contain n nodes
 };
 
-// Recursive DFS
+/**********************************************************************/ 
 var lowestCommonAncestor = function(root, p, q) {
     let ancestorsP = new Map(), ancestorsQ = new Map();
     findAncestors(root, p, ancestorsP);
@@ -72,3 +73,23 @@ function findAncestors(root, target, map) {
         return true;
     }
 }
+
+/**********************************************************************/ 
+var lowestCommonAncestor = function(root, p, q) {
+    function findLca(root, p, q) {
+        if (!root) return null;
+        if (p == root || q == root) return root;
+        let left = findLca(root.left, p, q);
+        let right = findLca(root.right, p, q);
+        if (left && right) return root;
+        if (left == null) return right;
+        if (right == null) return left;
+    }
+    return findLca(root, p, q);
+    // Time Complexity: O(n), we possibly visit all nodes
+    // Space Complexity: O(H) or O(n), call stack will go as deep as the height of tree, and the height can be at most n in case of a skewed tree.
+};
+// What we want to do at each root node is to check if there is p or q in the left subtree and if there is p or q in the right subtree. 
+// If we find one in left subtree and the other in the right subtree, we return the root node as this is the lowest common ancestor.
+// If we find one either in the left subtree or in the right subtree, we return the subtree so we can tell our parent node that we've found one of p and q down in the tree. 
+// If we find none in either subtree, we return null.
