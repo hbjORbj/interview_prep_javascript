@@ -6,6 +6,7 @@ According to the definition of LCA on Wikipedia: “The lowest common ancestor i
 that has both p and q as descendants (where we allow a node to be a descendant of itself).”
 */
 
+// BFS
 var lowestCommonAncestor = function(root, p, q) {
     let m = new Map();
     // (key, value) in m represents (node, parent node)
@@ -39,5 +40,35 @@ var lowestCommonAncestor = function(root, p, q) {
     }
     return null;
     // Time Complexity: O(n), we visit all nodes
-    // Space Complexity: O(n/2) = O(n), the bottom level can contain n/2 nodes at most and therefore queue might contain n/2 nodes
+    // Space Complexity: O(n), the map will contain n nodes
 };
+
+// Recursive DFS
+var lowestCommonAncestor = function(root, p, q) {
+    let ancestorsP = new Map(), ancestorsQ = new Map();
+    findAncestors(root, p, ancestorsP);
+    findAncestors(root, q, ancestorsQ);
+    ancestorsP.set(root, 1);
+    ancestorsQ.set(root, 1);
+    
+    for (let ancestor of ancestorsP.keys()) {
+        // the first ancestor found is the lowest common ancestor
+        if (ancestorsQ.has(ancestor)) return ancestor;
+    }
+    return null;
+    // Time Complexity: O(n), we possible visit all nodes
+    // Space Complexity: O(n), in case of a skewed tree, the call stack can go as deep as n and also the map can contain n nodes in this case
+};
+
+function findAncestors(root, target, map) {
+    if (!root) return;
+    if (root == target) return true;
+    if (findAncestors(root.left, target, map) == true) {
+        map.set(root.left,  1);
+        return true;
+    }
+    if (findAncestors(root.right, target, map) == true) {
+        map.set(root.right, 1);
+        return true;
+    }
+}
