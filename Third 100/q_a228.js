@@ -19,6 +19,37 @@ var zigzagLevelOrder = function(root) {
         res.push(level);
     }
     return res;
-    // Time Complexity: O(n), we visit all nodes
+    // Time Complexity: O(n^2) due to unshift(), which can be O(n)
     // Space Complexity: O(n), the bottom can contain at most n/2 nodes
+};
+
+
+// Using Two Stacks
+var zigzagLevelOrder = function(root) {
+    if (!root) return [];
+    let stack1 = [root], stack2 = [];
+    let res = [];
+    while (stack1.length > 0 || stack2.length > 0) {
+        let level = [];
+        if (res.length % 2 == 0) { // normal order (next order is reverse order)
+            while (stack1.length > 0) {
+                let node = stack1.pop();
+                level.push(node.val);
+                if (node.left) stack2.push(node.left);   
+                if (node.right) stack2.push(node.right);
+            }
+        }
+        else { // reverse order (next order is normal order)
+            while (stack2.length > 0) {
+                let node = stack2.pop();
+                level.push(node.val);
+                if (node.right) stack1.push(node.right);
+                if (node.left) stack1.push(node.left);
+            }
+        }
+        res.push(level);
+    }
+    return res;
+    // Time Complexity: O(n)
+    // Space Complexity: O(n)
 };
