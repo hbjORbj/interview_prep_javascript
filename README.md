@@ -1,4 +1,4 @@
-# Interview Prep
+# Interview Prep using JavaScript
 
 You all know how exciting and fun interview preparation is. Let's dive into it! <br/>
 
