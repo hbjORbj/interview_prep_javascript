@@ -6,6 +6,8 @@ Input: arr = [4, 4, 8, 8, 8, 15, 16, 23, 23, 42], target = 8
 Output: 3
 */
 
+// Time Complexity: O(log(n))
+// Space Complexity: O(1)
 function findOccurrencesOfTarget(nums, target) {
     // Find the first occurrence
     let left = 0, right = nums.length - 1, mid;
