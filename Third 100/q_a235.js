@@ -25,6 +25,8 @@ function maxSumRectangle(matrix) {
     }
     return [[maxRecTop, maxRecLeft], [maxRecBottom, maxRecRight], maxSum];
 }
+// Time Complexity: O(col^2 * row)
+// Space Complexity: O(row)
 
 function findMaxSum(arr) {
     let subArrSum = 0, maxSum = -Infinity;
