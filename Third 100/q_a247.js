@@ -8,23 +8,56 @@ We are given the root of a binary tree with unique values, and the values x and 
 Return true if and only if the nodes corresponding to the values x and y are cousins.
 */
 
+// BFS
 var isCousins = function(root, x, y) {
-    if (x == root.val || y == root.val) return false;
-    let m = new Map();
+    if (x == root.val || y == root.val || !root) return false;
+    let parentX, depthX, parentY, depthY;
     let queue = [{node: root, depth: 0}];
     while (queue.length > 0) {
         let {node, depth} = queue.shift();
         if (node.left) {
-            m.set(node.left.val, {parent: node.val, depth: depth + 1});
             queue.push({node: node.left, depth: depth + 1});
+            if (node.left.val == x) {
+                parentX = node.val;
+                depthX = depth + 1;
+            }
+            if (node.left.val == y) {
+                parentY = node.val;
+                depthY = depth + 1;
+            }
         }
         if (node.right) {
-            m.set(node.right.val, {parent: node.val, depth: depth + 1});
             queue.push({node: node.right, depth: depth + 1});
+            if (node.right.val == x) {
+                parentX = node.val;
+                depthX = depth + 1;
+            }
+            if (node.right.val == y) {
+                parentY = node.val;
+                depthY = depth + 1;
+            }
         }
+        if (parentX && parentY && depthX && depthY) break;
     }
-    return (m.get(x).parent !== m.get(y).parent
-           && m.get(x).depth == m.get(y).depth);
+    return parentX !== parentY && depthX === depthY;
     // Time Complexity: O(n)
     // Space Complexity: O(n)
+};
+
+// DFS
+var isCousins = function(root, x, y) {
+    if (x == root.val || y == root.val || !root) return false;
+    let [parentX, depthX] = dfsTraversal(root, x, 0);
+    let [parentY, depthY] = dfsTraversal(root, y, 0);
+    return parentX !== parentY && depthX == depthY;
+    // Time Complexity: O(n), possibly visit all nodes
+    // Space Complexity: O(n), call stack can go at most n (in case of a skewed tree)
+};
+
+function dfsTraversal(root, target, depth) {
+    if (!root) return;
+    if (root.left && root.left.val == target) return [root.val, depth + 1];
+    if (root.right && root.right.val == target) return [root.val, depth + 1];
+    return dfsTraversal(root.left, target, depth + 1) ||
+           dfsTraversal(root.right, target, depth + 1);
 };
