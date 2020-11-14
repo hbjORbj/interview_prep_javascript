@@ -5,31 +5,19 @@ Note that once you delete a leaf node with value target, if it's parent node bec
 */
 
 var removeLeafNodes = function(root, target) {
-    dfs(root, target);
-    if (root.val == target && isLeaf(root)) return null;
-    else return root;
+    function removeTargetLeaves(root, target) {
+        if (!root) return null;
+       if (root.val == target && !root.left && !root.right) {
+            return null;
+        }
+        root.left = removeLeafNodes(root.left, target);
+        root.right = removeLeafNodes(root.right, target);
+        if (root.val == target && !root.left && !root.right) {
+            return null;
+        }
+        return root;
+    }
+    return removeTargetLeaves(root, target);
     // Time Complexity: O(N), we visit all nodes
     // Space Complexity: O(H), call stack can go as deep as height of tree
 };
-
-function dfs(root, target) {
-    if (!root) return;
-    if (root.left && root.left.val == target && isLeaf(root.left)) {
-        root.left = null;
-    }
-    if (root.right && root.right.val == target && isLeaf(root.right)) {
-        root.right = null;
-    }
-    dfs(root.left, target);
-    if (root.left && root.left.val == target && isLeaf(root.left)) {
-        root.left = null;
-    }
-    dfs(root.right, target);
-    if (root.right && root.right.val == target && isLeaf(root.right)) {
-        root.right = null;
-    }
-}
-
-function isLeaf(root) {
-    return !root.left && !root.right;
-}
