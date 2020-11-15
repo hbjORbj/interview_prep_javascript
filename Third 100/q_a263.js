@@ -33,7 +33,7 @@ var rotateRight = function(head, k) {
     if (k % len == 0) return head; // rotating zero or a multiple of len times doesn't change anything
     
     cur = head; // re-initialise
-    for (let i = 0; i < len - (k % len); i++) {
+    for (let i = 0; i < len - (k % len); i++) { // the new head will be k % len away from the end of the list
         prev = cur;
         cur = cur.next;
     }
