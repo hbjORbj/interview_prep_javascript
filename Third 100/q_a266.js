@@ -49,3 +49,7 @@ var findItinerary = function(tickets) {
     // Time Complexity: O(E^k), k = maximum # of flights from an airport and k can be at most V-1 | we need to form a sequence of edges using all edges here. if we have k to choose from for each edge, that is E^k
     // Space Complexity: O(V+E), for adjacency list
 };
+
+// We start from JFK and try to find a valid itinerary. A valid itinerary is one that uses all edges (tickets) given.
+// Anytime we encounter an invalid itinerary (no more airport to go further but hasn't used all edges), we backtrack and travel to another airport.
+// Since we already sorted the adjacency list, the first valid itinerary is the answer (smallest lexical order).
