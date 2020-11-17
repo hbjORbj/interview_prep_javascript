@@ -14,7 +14,7 @@ var wordBreak = function(s, wordDict) {
         dict.set(wordDict[i], 1);
     }
     return canFormSequence(s, dict, memo);
-    // Time Complexity: O(N^2)
+    // Time Complexity: O(N^2), # of distinct substrings is N^2 / 2 
     // Space Complexity: O(N), call stack can go as deep as the length of string
 };
     
