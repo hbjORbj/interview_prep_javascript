@@ -14,11 +14,8 @@ Note:
 
 // BFS is used often when we want to find the node closest to the starting node.
 // It is the case here because we want to find the shortest sequence starting from a specific word.
-// All possible next connecting words are pushed to queue and we repeat the process until there are no more possible connecting words. If there is an answer, we will be able to find it during the process before we run out of connecting words.
-
-// BFS is used often when we want to find the node closest to the starting node.
-// It is the case here because we want to find the shortest sequence starting from a specific word.
-// All possible next connecting words are pushed to queue and we repeat the process until there are no more possible connecting words. If there is an answer, we will be able to find it during the process before we run out of connecting words.
+// All possible next connecting words are pushed to queue and we repeat the process until there are no more possible connecting words. If there is an answer, 
+// we will be able to find it during the process before we run out of connecting words.
 
 var ladderLength = function(beginWord, endWord, wordList) {
     let set = new Set(wordList);
