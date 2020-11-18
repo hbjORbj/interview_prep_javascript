@@ -23,12 +23,10 @@ var findCircleNum = function(M) {
 };
 
 function dfs(vertex, M, visited) {
-    if (visited[vertex] == true) return;
-
     visited[vertex] = true;
     let connections = M[vertex];
     for (let next = 0; next < connections.length; next++) {
-        if (M[vertex][next] == 1) { // there is an edge from current vertex to next vertex
+        if (M[vertex][next] == 1 && visited[next] == false) { // there is an edge from current vertex to next vertex
             dfs(next, M, visited);
         }
     }
