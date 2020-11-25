@@ -12,7 +12,7 @@ function numOfIslands(grid) {
     for (let row = 0; row < grid.length; row++) {
         for (let col = 0; col < grid[0].length; col++) {
             if (grid[row][col] == '1') {
-                dfsTraversal(row, col, grid);
+                bfsTraversal(row, col, grid);
                 count++;
             }
         }
@@ -29,5 +29,19 @@ function dfsTraversal(row, col, grid) {
     const DIRECTIONS = [[-1,0],[0,1],[1,0],[0,-1]];
     for (let dir of DIRECTIONS) {
         dfsTraversal(row+dir[0], col+dir[1], grid);
+    }
+}
+
+function bfsTraversal(row, col, grid) {
+    let queue = [[row, col]];
+    const DIRECTIONS = [[-1,0],[0,1],[1,0],[0,-1]];
+    while (queue.length > 0) {
+        let [row, col] = queue.shift();
+        if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length 
+            || grid[row][col] == '0') continue;
+        grid[row][col] = '0';
+        for (let dir of DIRECTIONS) {
+            queue.push([row + dir[0], col + dir[1]]);
+        }
     }
 }
