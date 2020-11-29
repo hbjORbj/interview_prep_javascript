@@ -29,6 +29,5 @@ var permute = function(nums) {
     }
     
     // Time Complexity: O(N!), number of possible permutations is N! / (N-r)! and therefore N! in this case
-	// Space Complexity: O(N); our function call stack will go as deep as the number of elements to permute, and since
-	// in this question we use all elements (N) to permute, the space complexity is O(N)
+	// Space Complexity: O(N!)
 };
