@@ -7,3 +7,17 @@ Find two lines, which, together with the x-axis forms a container, such that the
 
 Notice that you may not slant the container.
 */
+
+var maxArea = function(height) {
+    let left = 0, right = height.length - 1;
+    let maxArea = 0;
+    while (left < right) {
+        let area = Math.min(height[left], height[right]) * (right - left);
+        maxArea = Math.max(maxArea, area);
+        if (height[left] < height[right]) left++;
+        else right--;
+    }
+    return maxArea;
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+};
