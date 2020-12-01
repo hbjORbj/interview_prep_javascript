@@ -13,7 +13,7 @@ var kClosest = function(points, K) {
         if (!m.has(distance)) m.set(distance, []);
         m.get(distance).push([x,y]);
     }
-    let pairs = Array.from(m.entries()); // key-value in m is {distance: [points]}
+    let pairs = Array.from(m.entries()); // (key, value) in m is (distance, [points])
     pairs.sort((a,b) => a[0] - b[0]); // sort from shortest to farthest distance
     
     for (let [distance, points] of pairs) {
