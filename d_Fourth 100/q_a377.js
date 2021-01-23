@@ -29,10 +29,19 @@ We concatenate a string to itself and check whether this concatenated string con
 In other words, check whether the other string is a substring of the concatenated string.
 This works because every possible rotated string is a substring of a concatenated string (if they are a rotation of each other).
 
+Test Cases:
+("", "") => true
+("a", "a") => true
+("abc", "ab") => false
+
+
 Time Complexity: O(N) where N is the length of a given string, because we scan the concatenated string to check if the other string is its substring
 Space Complexity: O(N), because we concatenate a string of size N
 */
 
+console.log(rotatedString("", "")); // true
+console.log(rotatedString("a", "a")); // true
+console.log(rotatedString("abc", "ab")); // false
 console.log(rotatedString("canada", "dacana")); // true
 console.log(rotatedString("canada", "canada")); // true
 console.log(rotatedString("canada", "canary")); // false
