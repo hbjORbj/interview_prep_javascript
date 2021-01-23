@@ -1,40 +1,71 @@
 /*
-Check if a String is a rotation of another.
+Reverse the words in a sentence.
 
-For example,
-["canada", "dacana"] => true
-["canada", "canada"] => true
-["canada", "canary"] => false
-["dacana", "adacan"] => true
+Ex) "this is a string" => "string a is this"
 */
 
-var rotatedString = function (str1, str2) {
-    if (str1.length !== str2.length) {
-      return false;
+var reverseWords1 = function (str) {
+  if (str == null) return str;
+  let arr = str.split("");
+  arr.reverse();
+  let start = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i + 1] === " " || arr[i + 1] === undefined) {
+      reverseChars(start, i);
+      start = i + 2;
     }
-    let concat = str1.concat(str1);
-    return concat.includes(str2);
-  };
-  
-  /*
-  Qs:
-  1. How do you want the result? Should it be a boolean?
-  - Yes.
-  2. What is both strings are equal?
-  - Return true.
-  
-  First of all, both strings' lengths must be the same. Otherwise, return false.
-  
-  We concatenate a string to itself and check whether this concatenated string contains the other string.
-  In other words, check whether the other string is a substring of the concatenated string.
-  This works because every possible rotated string is a substring of a concatenated string (if they are a rotation of each other).
-  
-  Time Complexity: O(N) where N is the length of a given string, because we scan the concatenated string to check if the other string is its substring
-  Space Complexity: O(N), because we concatenate a string of size N
-  */
-  
-  console.log(rotatedString("canada", "dacana")); // true
-  console.log(rotatedString("canada", "canada")); // true
-  console.log(rotatedString("canada", "canary")); // false
-  console.log(rotatedString("dacana", "adacan")); // true
-  
+  }
+
+  return arr.join("");
+
+  function reverseChars(l, r) {
+    while (l < r) {
+      [arr[l], arr[r]] = [arr[r], arr[l]];
+      l++, r--;
+    }
+  }
+};
+
+/*
+Qs:
+1. What if given string is empty?
+- Return an empty string.
+2. Should I consider a word as a chunk of letters delimited by space?
+
+Solve:
+1. Reverse the entire string.
+2. Reverse each word.
+
+Time Complexity: O(N) where N is the size of given string, because we scan through the whole string
+Space Complexity: O(N), because we create an array of size N
+*/
+
+console.log(reverseWords1("this is a string"));
+
+var reverseWords2 = function (str) {
+  if (str == null) return str;
+  let res = "",
+    temp = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+    if (str[i] === " ") {
+      res += temp + " ";
+      temp = "";
+    } else {
+      temp = str[i] + temp;
+    }
+  }
+  res += temp;
+  return res;
+};
+
+/*
+Solve:
+1. We traverse the string from the back, and when we find a word, we place it into a new string.
+2. Return the new string.
+(How do we decide if we've found a word? If we encouner an empty space, that means that we've just passed a word.)
+
+Time Complexity: O(N), we scan through the entire string which is of size N
+Space Complexity: O(N), new string of size N
+*/
+console.log(reverseWords2("this is a string")); // "string a is this"
