@@ -19,3 +19,5 @@ var intersection = function(nums1, nums2) {
     // Time Complexity: O(m + n)
     // Space Complexity: O(max(m, n))
 };
+
+console.log(intersection([1,2,3,4], [4]))
