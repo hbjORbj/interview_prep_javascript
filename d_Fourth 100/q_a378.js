@@ -5,7 +5,7 @@ Ex) "this is a string" => "string a is this"
 */
 
 var reverseWords1 = function (str) {
-  if (str == null) return str;
+  if (str === null || str === "") return str;
   let arr = str.split("");
   arr.reverse();
   let start = 0;
@@ -44,7 +44,7 @@ Space Complexity: O(N), because we create an array of size N
 console.log(reverseWords1("this is a string"));
 
 var reverseWords2 = function (str) {
-  if (str == null) return str;
+  if (str === null || str === "") return str;
   let res = "",
     temp = "";
   for (let i = str.length - 1; i >= 0; i--) {
