@@ -51,8 +51,11 @@ null -> null
 [] -> []
 [1] -> [1]
 
-1. Tranpose the matrix.
+1. Transpose the matrix.
 2. Reverse each row.
+
+Time Complexity: O(N), where n is the total number of elements
+Space Complexity: O(1)
 */
 
 console.log(rotateMatrix([1]));
