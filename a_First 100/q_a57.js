@@ -7,30 +7,31 @@ Qs to ask:
 2. What to return if the list is empty?
 - Return null.
 */
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
+
+const reverseList = (head) => {
+  let prev = null,
+    cur = head,
+    next = null;
+  while (cur != null) {
+    next = cur.next;
+    cur.next = prev;
+    prev = cur;
+    cur = next;
+  }
+  return prev;
+};
+
 let node1 = new ListNode(1);
 let node2 = new ListNode(2);
 let node3 = new ListNode(3);
 node1.next = node2;
 node2.next = node3;
 
-function ListNode(val) {
-    this.val = val;
-    this.next = null;
-}
-
-console.log(reverseList(node1))
-
-var reverseList = function(head) {
-    let prev = null, cur = head, next = null;
-    while (cur != null) {
-        next = cur.next;
-        cur.next = prev;
-        prev = cur;
-        cur = next;
-    }
-    return prev;
-};
-
+console.log(reverseList(node1));
 /*
 Test Cases:
 [] => null

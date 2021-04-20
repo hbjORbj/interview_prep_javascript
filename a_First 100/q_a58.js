@@ -23,26 +23,26 @@ node4.next = node5;
 node5.next = node3;
 
 function ListNode(val) {
-    this.val = val;
-    this.next = null;
+  this.val = val;
+  this.next = null;
+}
+
+function hasCycle(head) {
+  let slow = head,
+    fast = head;
+  while (fast != null) {
+    fast = fast.next; // fast pointer should advance first; if slow pointer advances first, we will get false true.
+    if (slow == fast) return true;
+    if (fast != null) {
+      fast = fast.next;
+      if (slow == fast) return true;
+    }
+    slow = slow.next;
+  }
+  return false;
 }
 
 console.log(hasCycle(node1));
-
-function hasCycle(head) {
-    let slow = head, fast = head;
-    while (fast != null) {
-        fast = fast.next; // fast pointer should advance first; if slow pointer advances first, we will get false true.
-        if (slow == fast) return true;
-        if (fast != null) {
-            fast = fast.next;
-            if (slow == fast) return true;
-        }
-        slow = slow.next;
-    }
-    return false;
-}
-
 /*
 Test Cases:
 [1,2,3,4,5] where 5 points to 3 => true

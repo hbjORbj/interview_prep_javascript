@@ -43,3 +43,11 @@ If the sum is equal to target, return the numbers.
 console.log(findTwoSum([1, 2, 3, 5, 6, 7], 11));
 console.log(findTwoSum([1, 2, 3, 5, 6, 7], 4));
 console.log(findTwoSum([1, 2, 3, 5, 6, 7], 13));
+
+const findTwoSum = (arr, target) => {
+  let start = 0;
+  let sum = 0;
+  for (let end = 0; end < arr.length; end++) {
+    
+  }
+}

@@ -26,6 +26,7 @@ var rotateArray = function (arr, X) {
 // Time Complexity: O(N)
 // Space Complexity: O(N)
 
+console.log("RESULT 1: \n");
 console.log(rotateArray([1, 2, 3, 4, 5, 6], 0));
 console.log(rotateArray([1], 2));
 console.log(rotateArray([1, 2, 3, 4, 5, 6], 2));
@@ -57,6 +58,7 @@ var rotateArray2 = function (arr, X) {
 // Time Complexity: O(N)
 // Space Complexity: O(1)
 
+console.log("RESULT 2: \n");
 console.log(rotateArray2([1, 2, 3, 4, 5, 6], 0));
 console.log(rotateArray2([1], 2));
 console.log(rotateArray2([1, 2, 3, 4, 5, 6], 2));

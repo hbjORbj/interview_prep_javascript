@@ -19,10 +19,12 @@ Qs
 var rotateMatrix = function (matrix) {
   if (matrix.length == 0 || matrix == null) return matrix;
   let len = matrix.length;
-  // Trampose the matrix
+  // Tranpose the matrix
   for (let i = 0; i < len; i++) {
     for (let j = i; j < len; j++) {
-      [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+      if (i !== j) {
+        [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+      }
     }
   }
   // Reverse each row

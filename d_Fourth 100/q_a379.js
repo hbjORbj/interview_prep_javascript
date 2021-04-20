@@ -7,7 +7,7 @@ ex) "abbababaab" -> "babab"
 var findLongestPalindrome = function (str) {
   if (str == null) return null;
   if (str.length == 0) return [];
-  let res = [0, 0];
+  let res = [0, 0];인턵
   let longest = 1;
   // Even
   for (let i = 0; i < str.length; i++) {
