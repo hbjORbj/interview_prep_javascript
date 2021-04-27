@@ -9,21 +9,27 @@ Qs:
 2. What is X is negative?
 - Return null;
 */
-function findSqrt(X) {
-    if (X < 0) return null;
+var mySqrt = function(X) {
     if (X <= 1) return X;
-    let left = 1, right = X, mid;
-    while (left <= right) {
-        mid = left + Math.floor((right - left) / 2);
-        if (mid**2 > X) right = mid - 1;
-        else if (mid**2 < X) {
-            if ((mid+1)**2 > X) return mid; // X is not a perfect square
-            left = mid + 1;
+    let low = 0, high = X / 2;
+    let mid;
+    while (low <= high) {
+        mid = low + Math.floor((high - low) / 2);
+        if (mid** 2 > X) {
+            high = mid - 1;
+        } else if (mid** 2 < X) {
+            if ((mid+1)**2 > X) {
+                return mid;
+            }
+            low = mid + 1;
+        } else {
+            return mid;
         }
-        else return mid;
     }
-    return -1; // Should not happen
-} 
+    return -1; // Should never be reached
+    // T.C: O(log(N))
+    // S.C: O(1)
+};
 /*
 Test Cases:
 0 => 0

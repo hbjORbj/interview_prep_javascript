@@ -44,6 +44,7 @@ function binarySearchForLastIndex(nums, low, high) {
         } catch(error) {
             // mid is out of bounds, go to lower half
             high = mid - 1;
+            continue;
         }
         try {
             let temp = nums[mid+1];

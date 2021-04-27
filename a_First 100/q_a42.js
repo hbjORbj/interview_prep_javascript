@@ -9,19 +9,23 @@ Questions to ask:
 2. Is 1 considered a perfect square?
 - Yes.
 */
-function isPerfectNumber(num) {
-    let left = 1, right = num, mid;
-    while (left <= right) {
-        // the loop continues until left <= right instead of left < right 
-        // because I want to check the last number left as well. 
-        // left < right does not check the last element.
-        mid = Math.floor((left+right) / 2);
-        if (mid**2 > num) right = mid-1;
-        else if (mid**2 < num) left = mid+1;
-        else break;
+var isPerfectSquare = function (num) {
+  if (num <= 1) return num;
+  let low = 0,
+    high = num / 2;
+  let mid;
+  while (low <= high) {
+    mid = low + Math.floor((high - low) / 2);
+    if (mid ** 2 > num) {
+      high = mid - 1;
+    } else if (mid ** 2 < num) {
+      low = mid + 1;
+    } else {
+      return true;
     }
-    return mid**2 == num;
-}
+  }
+  return false;
+};
 
 /*
 Test Cases: 
@@ -46,4 +50,3 @@ Else, return false.
 Time Complexity: O(log(n))
 Space Complexity: O(1)
 */
-
