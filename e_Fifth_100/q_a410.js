@@ -46,10 +46,10 @@ const findMedian = (head) => {
   return slow;
 };
 
-const findPrev = (head, median) => {
-  if (head === median) return null;
+const findPrev = (head, tail) => {
+  if (head === tail) return null;
   let prev = head;
-  while (prev.next !== median) {
+  while (prev.next !== tail) {
     prev = prev.next;
   }
   return prev;
