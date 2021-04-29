@@ -3,26 +3,31 @@ Given a string s, return the longest palindromic substring in s.
 s consist of only digits and English letters (lower-case and/or upper-case),
 */
 
-function longestPalindrome(s) {
-    for (let j = s.length-1; j >= 0; j--) {
-        let i = 0, k = j;
-        while (k < s.length) {
-            let substr = s.substring(i,k+1);
-            if (isPalindrome(substr)) return substr;
-            i++, k++; // slide the window to the right while keeping the same length of the window
-        }
+var longestPalindrome = function (s) {
+  for (let i = s.length - 1; i >= 0; i--) {
+    let start = 0;
+    let end = i;
+    while (end < s.length) {
+      if (isPalindrome(s, start, end)) {
+        return s.substring(start, end + 1);
+      }
+      start++, end++;
     }
-    return ""; // no palindromic substring exists
-}
+  }
+  return "";
+};
 
-function isPalindrome(str) {
-    let  l = 0, r = str.length-1;
-    while (l < r) {
-        if (str[l] !== str[r]) return false;
-        l++, r--;
+const isPalindrome = (str, i, j) => {
+  let start = i,
+    end = j;
+  while (start < end) {
+    if (str[start] !== str[end]) {
+      return false;
     }
-    return true;
-}
+    start++, end--;
+  }
+  return true;
+};
 
 /*
 Test Cases: ("abacbcab") => "bacbcab"

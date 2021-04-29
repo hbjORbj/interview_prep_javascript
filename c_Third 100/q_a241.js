@@ -21,11 +21,6 @@ var findMedianSortedArrays = function(nums1, nums2) {
     while (idx2 < nums2.length) sorted.push(nums2[idx2++]);
     let mid = Math.floor((sorted.length-1) / 2);
     return sorted.length % 2 == 1 ? sorted[mid] : (sorted[mid] + sorted[mid+1]) / 2;
-    // Time Complexity: O(max(m,n))
+    // Time Complexity: O(m+n)
     // Space Complexity: O(m+n)
-};
-
-// Optimal Solution
-var findMedianSortedArrays = function(nums1, nums2) {
-
 };
