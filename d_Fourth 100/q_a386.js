@@ -17,26 +17,28 @@ Qs
 */
 
 var rotateMatrix2 = function (matrix) {
-  if (matrix == null || matrix.length == 0) {
-    return matrix;
+  if (matrix === null || matrix.length === 0 || matrix[0].length === 0) {
+    return;
   }
-  let len = matrix.length;
-  for (let start = 0; start < Math.floor(len / 2); start++) {
-    let end = len - 1 - start;
-    rotate(matrix, start, end);
+  // we don't count the single entry in the center as a layer
+  let numOfLayers = Math.floor(matrix.length / 2);
+  for (let i = 0; i < numOfLayers; i++) {
+    rotateLayer(matrix, i, matrix.length - 1 - i);
   }
+  // T.C: O(N^2)
+  // S.C: O(1)
   return matrix;
 };
 
-function rotate(matrix, start, end) {
-  for (let i = start; i < end; i++) {
-    let temp = matrix[start][start + i]; // save top
+const rotateLayer = (matrix, start, end) => {
+  for (let i = 0; start + i < end; i++) {
+    let tempTop = matrix[start][start + i]; // save top
     matrix[start][start + i] = matrix[end - i][start]; // left to top
     matrix[end - i][start] = matrix[end][end - i]; // bottom to left
     matrix[end][end - i] = matrix[start + i][end]; // right to bottom
-    matrix[start + i][end] = temp; // top to right
+    matrix[start + i][end] = tempTop;
   }
-}
+};
 
 /*
 Test cases:

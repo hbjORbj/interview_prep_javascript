@@ -10,57 +10,55 @@ Qs:
 - Return the head.
 */
 var rotateRight = function (head, k) {
-  if (!head || k === 0) {
+  if (head === null) {
     return head;
   }
   let len = lengthOfLL(head);
   k = k % len;
   if (k === 0) {
-    // No need to rotate
     return head;
   }
+  // Reverse the entire list
+  head = reverseLL(head, null);
 
-  // Set newTail to x(i)
-  // Set newHead to x(i+1)
-  let newTail = null;
-  let newHead = head;
-  for (let i = 0; i < len - k; i++) {
-    newTail = newHead;
-    newHead = newHead.next;
+  // Find the tail of first k-node list
+  let tail1 = head;
+  for (let i = 0; i < k; i++) {
+    tail1 = tail1.next;
   }
-
-  // Set tail's next pointer to null
-  newTail.next = null;
-
-  // Find x(i+k) and set its next pointer to original head (x0)
-  let cur = newHead;
+  // Reverse the first k-node list
+  let head1 = reverseLL(head, tail1);
+  // Reverse the remaining list
+  let head2 = reverseLL(tail1, null);
+  // Chain two lists
+  let cur = head1;
   while (cur.next !== null) {
     cur = cur.next;
   }
-  cur.next = head;
-
-  return newHead;
+  cur.next = head2;
+  return head1;
   // T.C: O(N)
   // S.C: O(1)
 };
 
-const lengthOfLL = (head) => {
+const reverseLL = (head, tail) => {
+  let prev = null;
   let cur = head;
+  while (cur !== tail) {
+    let next = cur.next;
+    cur.next = prev;
+    prev = cur;
+    cur = next;
+  }
+  return prev;
+};
+
+const lengthOfLL = (head) => {
   let count = 0;
+  let cur = head;
   while (cur !== null) {
-    count++;
     cur = cur.next;
+    count++;
   }
   return count;
 };
-
-/*
-k = length of list % k because rotating a list to the right by the length of list leaves
-the list unchanged.
-
-The last k elements of the list will be shifted to the right.
-Hence, we can re-express the list
-[x0...xi, x(i+1)...x(i+k)] as [x(i+1)...x(i+k)...x0...xi].
-
-So, x(i+1) will be the new head and xi will be the new tail.
-*/
