@@ -36,9 +36,6 @@ var uniquePaths2 = function (m, n) {
 };
 
 const numberOfPaths = (row, col, memo) => {
-  if (row < 0 || col < 0) {
-    return 0;
-  }
   if (row === 0 || col === 0) {
     return 1;
   }
