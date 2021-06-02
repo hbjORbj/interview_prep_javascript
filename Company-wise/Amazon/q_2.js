@@ -86,6 +86,6 @@ var getPermutation = function (n, k) {
     nums.splice(idx, 1);
   }
   return res.join("");
-  // T.C: O(N)
+  // T.C: O(N^2)
   // S.C: O(N)
 };
