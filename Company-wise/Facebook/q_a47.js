@@ -19,3 +19,45 @@ Also, any solutions that attempt to circumvent the judge will result in disquali
 
 For custom testing purposes, the input will be the entire binary matrix mat. You will not have access to the binary matrix directly.
 */
+
+// First Solution (Too many API calls)
+var leftMostColumnWithOne = function (mat) {
+  let [height, width] = mat.dimensions();
+  let leftMostCol = Infinity;
+  for (let row = 0; row < height; row++) {
+    for (let col = 0; col < width; col++) {
+      if (mat[row][col] === 1) {
+        leftMostCol = Math.min(leftMostCol, col);
+        break;
+      }
+    }
+  }
+  return leftMostCol === Infinity ? -1 : leftMostCol;
+  // T.C: O(M*N), M = # of rows, N = # of columns
+  // S.C: O(1)
+};
+
+// Second Solution
+// Binary Search for each row
+var leftMostColumnWithOne = function (mat) {
+  let [height, width] = mat.dimensions();
+  let leftMostCol = Infinity;
+  for (let row = 0; row < height; row++) {
+    let low = 0,
+      high = width - 1;
+    while (low <= high) {
+      let mid = low + Math.floor((high - low) / 2);
+      if (mat.get(row, mid) === 0) {
+        low = mid + 1;
+      } else {
+        if (mid === 0 || mat.get(row, mid - 1) === 0) {
+          leftMostCol = Math.min(leftMostCol, mid); // found the left-most 1
+          break;
+        } else high = mid - 1;
+      }
+    }
+  }
+  return leftMostCol === Infinity ? -1 : leftMostCol;
+  // T.C: O(Mlog(N)), M = # of rows, N = # of columns
+  // S.C: O(1)
+};
