@@ -40,3 +40,47 @@ var lowestCommonAncestor = function (p, q) {
     return left || right || isCurTarget;
   }
 };
+
+/*
+More efficient solution:
+1. Get depth of p and q and make their level equal by making deeper tree climb up.
+2. If both trees are at the same node, p or q is the lca, because this means one tree was somewhere in subtree of another.
+Else, start pushing up both nodes to the top until they have the common parent.
+*/
+var lowestCommonAncestor = function (p, q) {
+  if (!p || !q) {
+    return null;
+  }
+  let pDepth = getDepth(p);
+  let qDepth = getDepth(q);
+  // equalize depths
+  while (pDepth !== qDepth) {
+    if (pDepth > qDepth) {
+      p = p.parent;
+      pDepth--;
+    } else {
+      q = q.parent;
+      qDepth--;
+    }
+  }
+  // one tree was somewhere in subtree of another
+  if (p === q) {
+    return p;
+  }
+  while (p !== q && p.parent && q.parent) {
+    p = p.parent;
+    q = q.parent;
+  }
+  return p;
+  // T.C: O(N)
+  // S.C: O(1)
+};
+
+function getDepth(root) {
+  let depth = 0;
+  while (root.parent) {
+    root = root.parent;
+    depth++;
+  }
+  return depth;
+}
